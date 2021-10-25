@@ -1,0 +1,23 @@
+name: 'RepoSync'
+author:
+  - name: 'Anthony Kung'
+    email: 'hi@anth.dev'
+description: 'GitHub Action to sync repositories (push to another repo when push detected on current repo)'
+inputs:
+  branches:
+    description: 'Source repository branch e.g. main or master'
+    default: 'main'
+    required: true
+  RS_TARGET:
+    description: 'Target repository in org/repo format e.g. Anthonykung/RepoSync'
+    required: true
+  RS_PAT:
+    description: 'GitHub Personal Access Token (PAT)'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v2
+branding:
+  icon: 'refresh-cw'  
+  color: 'orange'
