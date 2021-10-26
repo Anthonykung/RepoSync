@@ -21,8 +21,8 @@ runs:
       uses: actions/checkout@v2
       with:
         repository: ${{ secrets.RS_TARGET }}
-          token: ${{ secrets.RS_PAT }}
-          path: target
+        token: ${{ secrets.RS_PAT }}
+        path: target
     - run: ${{ github.action_path }}/RepoSync.sh
       shell: bash
 branding:
