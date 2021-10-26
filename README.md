@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: AnthRepoSync
-        uses: Anthonykung/RepoSync@v1.4.0
+        uses: Anthonykung/RepoSync@v1.4.2
         with:
           RS_TARGET: ${{ secrets.RS_TARGET }}
           RS_PAT: ${{ secrets.RS_PAT }}
