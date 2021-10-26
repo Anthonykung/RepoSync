@@ -4,6 +4,35 @@ GitHub Action to sync repositories (push to another repo when push detected on c
 
 ## Usage
 
+### GitHub Way
+
+1. Create Personal Access Token (PAT) with `public_repo` scope (if your target repo is a private repo, you need a private scope use `repo` instead)
+2. Save PAT as secret named `RS_PAT` by going to `GitHub -> Repo -> Settings -> Secrets -> New reposirory secret`
+3. Create a secret named `RS_TARGET` with your target repo name in `org/repo` format e.g. `Anthonykung/RepoSync`
+4. Create a new GitHub action Workflow by `GitHub -> Repo -> Actions -> New workflow -> set up a workflow yourself`
+5. Copy and paste the following to the text area
+6. Rename the file to `RepoSync.yml`
+7. Hit save and be done!
+
+```
+name: AnthRepoSync
+on: 
+  push:
+    # Remove the `#` below if you only want a specific branch, leave it for all pushes
+    # branches:
+    # - main
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: AnthRepoSync
+        uses: Anthonykung/RepoSync@v1.0.0
+```
+
+### Workflow Way
+
 1. Create Personal Access Token (PAT) with `public_repo` scope (if your target repo is a private repo, you need a private scope use `repo` instead)
 2. Save PAT as secret named `RS_PAT` by going to `GitHub -> Repo -> Settings -> Secrets -> New reposirory secret`
 3. If you use a branch that is not `main`, you will need to update `RepoSync.yml` with your branch name e.g. `master` (sorry they don't let me use secrets 😭)
